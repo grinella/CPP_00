@@ -36,6 +36,8 @@ void PhoneBook::Add()
 		}
 		contacts[7] = newContact;
 	}
+	system("clear");
+	std::cout << "contatto salvato ✓" << std::endl << std::endl;
 }
 
 void PhoneBook::Search()
@@ -48,7 +50,7 @@ void PhoneBook::Search()
               << std::setw(10) << "Nickname" << std::endl;
 
     for (int i = 0; i < count; i++) {
-        std::cout << std::setw(10) << i << "|"
+        std::cout << std::setw(10) << i+1 << "|"
                   << std::setw(10) << (contacts[i].getFirstName().length() > 10 ? contacts[i].getFirstName().substr(0, 9) + "." : contacts[i].getFirstName()) << "|"
                   << std::setw(10) << (contacts[i].getLastName().length() > 10 ? contacts[i].getLastName().substr(0, 9) + "." : contacts[i].getLastName()) << "|"
                   << std::setw(10) << (contacts[i].getNickname().length() > 10 ? contacts[i].getNickname().substr(0, 9) + "." : contacts[i].getNickname()) 
@@ -56,12 +58,30 @@ void PhoneBook::Search()
     }
 	std::cout << "Fai una ricerca attraverso l'ndice:" << std::endl;
 	std::getline(std::cin, search);
-	if (isalnum(atoi(search.c_str())) == 0) {
+	if (*search.c_str() == '\0') {
+		system("clear");
+		std::cout << "L'INVIO NON É TRA I CONTATTI" << std::endl << std::endl;
+		return ;
+	}
+	if (search.length() > 1) {
+		system("clear");
+		std::cout << "me sa che non se semo compresi... (devi darmi un sono numero)" << std::endl << std::endl;
+	}
+	else if (isdigit(atoi(search.c_str())) == 0) {
 		int i = atoi(search.c_str());
-		std::cout << std::setw(10) << (contacts[i].getFirstName().length() > 10 ? contacts[i].getFirstName().substr(0, 9) + "." : contacts[i].getFirstName()) << std::endl
-                  << std::setw(10) << (contacts[i].getLastName().length() > 10 ? contacts[i].getLastName().substr(0, 9) + "." : contacts[i].getLastName()) << std::endl
-                  << std::setw(10) << (contacts[i].getNickname().length() > 10 ? contacts[i].getNickname().substr(0, 9) + "." : contacts[i].getNickname()) << std::endl
-				  << std::setw(10) << (contacts[i].getPhoneNumber().length() > 10 ? contacts[i].getPhoneNumber().substr(0, 9) + "." : contacts[i].getPhoneNumber()) << std::endl
-                  << std::setw(10) << (contacts[i].getDarkestSecret().length() > 10 ? contacts[i].getDarkestSecret().substr(0, 9) + "." : contacts[i].getDarkestSecret()) << std::endl;
+		i -= 1;
+		if (i >= 0 && i <= 7) {
+			system("clear");
+			std::cout << std::endl
+				<< std::setw(0) << "NOME           : " << (contacts[i].getFirstName()) << std::endl
+				<< std::setw(0) << "COGNOME        : " << (contacts[i].getLastName()) << std::endl
+				<< std::setw(0) << "SOPRANNOME     : " << (contacts[i].getNickname()) << std::endl
+				<< std::setw(0) << "NUMERO         : " << (contacts[i].getPhoneNumber()) << std::endl
+				<< std::setw(0) << "SEGRETO OSCURO : " << (contacts[i].getDarkestSecret()) << std::endl;
+		}
+		else {
+			system("clear");
+			std::cout << "l'indice cercato non esiste tra i contatti" << std::endl;
+		}
 	}
 }

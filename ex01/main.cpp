@@ -4,9 +4,13 @@ int main()
 {
 	PhoneBook phonebook;
 	std::string cmd;
+	system("clear");
 	while (true) {
 		std::cout << "Scegli tra ADD, SEARCH and EXIT" << std::endl;
-		std::getline(std::cin, cmd);
+		if (!std::getline(std::cin, cmd)) {
+            std::cout << "^D" << std::endl;
+			break ;
+        }
 		if (cmd == "ADD") {
 			phonebook.Add();
 		}

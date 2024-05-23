@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <ctype.h>
+#include <stdlib.h>
 
 class Contact
 {
@@ -14,6 +17,8 @@ private:
 
 //si chiamano metodi (funzioni appartenenti ad una classe)
 public:
+    //Contact();
+    //~Contact();
     void setFirstName();
     void setLastName();
     void setNickname();
