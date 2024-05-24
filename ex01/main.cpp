@@ -21,7 +21,8 @@ int main()
 			break ;
 		}
 		else {
-			std::cout << "Comando sconosciuto!" << std::endl;
+			system("clear");
+			std::cout << "Comando sconosciuto!" << std::endl << std::endl << "RIPROVA" << std::endl << std::endl;
 		}
 	}
 	return 0;

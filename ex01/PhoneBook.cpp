@@ -8,6 +8,7 @@ void PhoneBook::Add()
 {
 	Contact newContact;
 
+	system("clear");
 	newContact.setFirstName();
 	if (newContact.getFirstName().empty()) return;
 
@@ -43,7 +44,7 @@ void PhoneBook::Add()
 void PhoneBook::Search()
 {
 	std::string search;
-
+	system("clear");
 	std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
@@ -70,14 +71,18 @@ void PhoneBook::Search()
 	else if (isdigit(atoi(search.c_str())) == 0) {
 		int i = atoi(search.c_str());
 		i -= 1;
+		if (contacts[i].getFirstName().empty()) {
+			system("clear");
+			std::cout << "Il contatto all'indice [" << i + 1 << "] non esiste" << std::endl;
+			return ;
+		}
 		if (i >= 0 && i <= 7) {
 			system("clear");
-			std::cout << std::endl
-				<< std::setw(0) << "NOME           : " << (contacts[i].getFirstName()) << std::endl
+			std::cout << std::setw(0) << "NOME           : " << (contacts[i].getFirstName()) << std::endl
 				<< std::setw(0) << "COGNOME        : " << (contacts[i].getLastName()) << std::endl
 				<< std::setw(0) << "SOPRANNOME     : " << (contacts[i].getNickname()) << std::endl
 				<< std::setw(0) << "NUMERO         : " << (contacts[i].getPhoneNumber()) << std::endl
-				<< std::setw(0) << "SEGRETO OSCURO : " << (contacts[i].getDarkestSecret()) << std::endl;
+				<< std::setw(0) << "SEGRETO OSCURO : " << (contacts[i].getDarkestSecret()) << std::endl << std::endl;
 		}
 		else {
 			system("clear");
