@@ -16,7 +16,6 @@ private:
 
 public:
     PhoneBook();
-    //~PhoneBook();
     void Add();
     void Search();
 };
