@@ -17,6 +17,8 @@ private:
 
 //si chiamano metodi (funzioni appartenenti ad una classe)
 public:
+    Contact();
+    ~Contact();
     void setFirstName();
     void setLastName();
     void setNickname();

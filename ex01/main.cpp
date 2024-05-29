@@ -4,7 +4,6 @@ int main()
 {
 	PhoneBook phonebook;
 	std::string cmd;
-	system("clear");
 	while (true) {
 		std::cout << "Scegli tra ADD, SEARCH and EXIT" << std::endl;
 		if (!std::getline(std::cin, cmd)) {

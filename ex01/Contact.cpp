@@ -3,6 +3,14 @@
 
 // SETTER
 
+Contact::Contact() {
+    std::cout << "Contact Created" << std::endl;
+}
+
+Contact::~Contact() {
+    std::cout << "Contact Destroyed" << std::endl;
+}
+
 void Contact::setFirstName()
 {
     std::cout << "Inserire Nome:" << std::endl;

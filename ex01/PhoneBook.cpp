@@ -4,6 +4,10 @@ PhoneBook::PhoneBook() {
 	count = 0;
 }
 
+PhoneBook::~PhoneBook() {
+    std::cout << "PhoneBook Destroyed" << std::endl;
+}
+
 void PhoneBook::Add()
 {
 	Contact newContact;
@@ -71,6 +75,11 @@ void PhoneBook::Search()
 	else if (isdigit(atoi(search.c_str())) == 0) {
 		int i = atoi(search.c_str());
 		i -= 1;
+		if (i < 0) {
+			system("clear");
+			std::cout << "l'indice cercato non esiste tra i contatti" << std::endl << std::endl;
+			return ;
+		}
 		if (contacts[i].getFirstName().empty()) {
 			system("clear");
 			std::cout << "Il contatto all'indice [" << i + 1 << "] non esiste" << std::endl;
